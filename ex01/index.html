@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Workshop] Initiation Vuejs</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <p>Quelle age avez vous ?</p>
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{ option.value }}
+            </option>
+        </select>
+        <p>Aimez-vous les fruits ?</p>
+        <input type="radio" id="oui" value="true" v-model="likeFruit">
+        <label for="oui">Oui</label>
+        <input type="radio" id="non" value="false" v-model="likeFruit">
+        <label for="non">Non</label>
+        <section v-if="selected >= 18">
+            <section v-if="likeFruit === 'true'">
+                <h2>Panier</h2>
+                <ul>
+                    <li>{{ fruit[0] }}</li>
+                    <li>{{ fruit[1] }}</li>
+                    <li>{{ fruit[2] }}</li>
+                </ul>
+            </section>
+            <section v-else-if="likeFruit === 'false'">
+                <h1> Les fruits c'est bon pour la sané !</h1>
+                <p> Es-tu sure de ne pas aimer les fruits ?</p>
+            </section>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "Bonjour Epitech", //string
+                fruit: ['Pommes', 'Banane', 'Poire'], //array
+                likeFruit: '', //Boolean
+                selected: 15,
+                options: [
+                    {text: "non", value: 15},
+                    {text: "non", value: 16},
+                    {text: "non", value: 17},
+                    {text: "oui", value: 18},
+                    {text: "oui", value: 19},
+                    {text: "oui", value: 20},
+                    {text: "oui", value: 21},
+                    {text: "oui", value: 22},
+                    {text: "oui", value: 23},
+                    {text: "oui", value: 24},
+                    {text: "oui", value: 25}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
